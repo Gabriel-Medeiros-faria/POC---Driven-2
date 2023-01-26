@@ -11,8 +11,16 @@ npm i
 
 3 - change database connection variables
 
-4 - Run the backend in a development environment:
+4 - Run all migrations
+
+```bash
+npx prisma migration dev
+```
+
+5 - Run the backend in a development environment:
+
 ```bash
 npm run dev
 ```
+
 happy hacking ;)
