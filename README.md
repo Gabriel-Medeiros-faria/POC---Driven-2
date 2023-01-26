@@ -16,6 +16,12 @@ npm i
 ```bash
 npx prisma migration dev
 ```
+5- Seed db
+
+```bash
+npm run prisma:seed
+```
+
 
 5 - Run the backend in a development environment:
 
