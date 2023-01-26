@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model character {
+  id                Int       @id @default(autoincrement())
+  name              String
+  power             Int
+  qtdTransformation Int
+  missionId         Int
+  mission       mission @relation(fields: [missionId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_mission")
+  villageId         Int
+  village   village @relation(fields: [villageId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_village")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model mission {
+  id              Int       @id @default(autoincrement())
+  missionLocation String
+  character       character[]
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model village {
+  id          Int       @id @default(autoincrement())
+  villageName String
+  character       character[]
+}
